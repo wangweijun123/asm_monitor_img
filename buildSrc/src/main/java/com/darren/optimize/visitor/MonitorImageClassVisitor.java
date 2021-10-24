@@ -6,13 +6,15 @@ import org.objectweb.asm.FieldVisitor;
 import org.objectweb.asm.MethodVisitor;
 import org.objectweb.asm.Opcodes;
 
+import static java.lang.System.out;
+
 public class MonitorImageClassVisitor extends ClassVisitor {
     public MonitorImageClassVisitor(ClassVisitor classVisitor) {
         super(Opcodes.ASM5, classVisitor);
     }
 
     /**
-     * 璁块棶绫讳細杩涘叆杩欓噷
+     * 访问类会进入这里
      */
     @Override
     public void visit(int version, int access, String name, String signature, String superName, String[] interfaces) {
@@ -21,5 +23,19 @@ public class MonitorImageClassVisitor extends ClassVisitor {
             superName = "com/darren/optimize/day04/MonitorImageView";
         }
         super.visit(version, access, name, signature, superName, interfaces);
+    }
+
+    /**
+     * @param access
+     * @param name
+     * @param descriptor
+     * @param signature
+     * @param exceptions
+     * @return
+     */
+    @Override
+    public MethodVisitor visitMethod(int access, String name, String descriptor, String signature, String[] exceptions) {
+        out.println("access:"+access+", ");
+        return super.visitMethod(access, name, descriptor, signature, exceptions);
     }
 }

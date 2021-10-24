@@ -49,7 +49,14 @@ class ImageMonitorTransform extends Transform {
     boolean isIncremental() {
         return false
     }
-
+    /**
+     * 转换: 处理自己码 (1 自己写的 2 引入第三方)
+     *
+     * @param transformInvocation
+     * @throws TransformException
+     * @throws InterruptedException
+     * @throws IOException
+     */
     @Override
     void transform(TransformInvocation transformInvocation) throws TransformException, InterruptedException, IOException {
         super.transform(transformInvocation)
@@ -81,6 +88,7 @@ class ImageMonitorTransform extends Transform {
         if (directoryInput.file.isDirectory()) {
             directoryInput.file.eachFileRecurse { File file ->
                 String name = file.name
+                println("absolutePath name :" + file.absolutePath)
                 if (filterClass(name)) {
                     // 用来读 class 信息
                     ClassReader classReader = new ClassReader(file.bytes)
@@ -111,6 +119,7 @@ class ImageMonitorTransform extends Transform {
     void handleJarInput(JarInput jarInput, TransformOutputProvider outputProvider) {
         if (jarInput.file.absolutePath.endsWith(".jar")) {
             // 重名名输出文件,因为可能同名,会覆盖
+
             def jarName = jarInput.name
             def md5Name = DigestUtils.md5Hex(jarInput.file.getAbsolutePath())
             if (jarName.endsWith(".jar")) {
