@@ -14,7 +14,7 @@ import android.widget.ImageView;
 import androidx.annotation.Nullable;
 
 public class MonitorImageView extends ImageView implements MessageQueue.IdleHandler {
-    private final String TAG = "MonitorImageView";
+    public static final String TAG = "MonitorImageView";
     private static final int MAX_ALARM_MULTIPLE = 2;
     private static final int MAX_ALARM_IMAGE_SIZE = 2 * 1024 * 1024;
     public MonitorImageView(Context context) {

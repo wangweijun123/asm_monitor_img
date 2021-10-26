@@ -20,6 +20,7 @@ public class MonitorImageClassVisitor extends ClassVisitor {
     public void visit(int version, int access, String name, String signature, String superName, String[] interfaces) {
         if(superName.equals("android/widget/ImageView")
                 && !name.equals("com/darren/optimize/day04/MonitorImageView")){
+            out.println("name:"+name+",replace superName:"+superName);
             superName = "com/darren/optimize/day04/MonitorImageView";
         }
         super.visit(version, access, name, signature, superName, interfaces);
@@ -35,7 +36,7 @@ public class MonitorImageClassVisitor extends ClassVisitor {
      */
     @Override
     public MethodVisitor visitMethod(int access, String name, String descriptor, String signature, String[] exceptions) {
-        out.println("access:"+access+", ");
+//        out.println("access:"+access+", ");
         return super.visitMethod(access, name, descriptor, signature, exceptions);
     }
 }

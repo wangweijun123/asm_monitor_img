@@ -88,7 +88,7 @@ class ImageMonitorTransform extends Transform {
         if (directoryInput.file.isDirectory()) {
             directoryInput.file.eachFileRecurse { File file ->
                 String name = file.name
-                println("absolutePath name :" + file.absolutePath)
+//                println("absolutePath name :" + file.absolutePath)
                 if (filterClass(name)) {
                     // 用来读 class 信息
                     ClassReader classReader = new ClassReader(file.bytes)
