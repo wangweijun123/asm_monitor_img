@@ -19,10 +19,10 @@ public class MainActivity extends AppCompatActivity {
 
         ImageView imageView = findViewById(R.id.image_view);
         imageView.setImageResource(R.mipmap.ic_launcher);
-        //1 imageView 真正的类型是 AppCompontImageView,
+        //1 imageView 真正的类型是 AppCompontImageView,2
         // 2 AppCompontImageView父类不再是ImageView,背替换成了MonitorImageView
         Log.i(MonitorImageView.TAG, "imageView = " +imageView + ", getSuperclass="+imageView.getClass().getSuperclass());// AppCompontImageView
-        // bitmap 是大图，2M ，告警加载了大图， 图片大小只有 40 dp，
+        // bitmap 是大图，2M ，告警加载了大图， 图片大小只有 40 dp
         // 网络或者本地的图片加载 200dp*200dp ，告警加载不合法
         // 滴滴的方案也很不错，加载大图告警，还可以显示链接，弊端需要各种适配4套，不能显示是否合法
         // 效能优化：这个就算是一个范例
