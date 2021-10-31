@@ -1,0 +1,6 @@
+gradlew 与 gradle 执行命令没有区别
+
+
+windowns使用bat: gradlew.bat
+
+linux使用: ./gradlew

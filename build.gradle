@@ -6,6 +6,7 @@ buildscript {
         jcenter()
         
     }
+    // 构建依赖
     dependencies {
         classpath 'com.android.tools.build:gradle:3.5.1'
         
@@ -20,6 +21,11 @@ allprojects {
         jcenter()
         
     }
+}
+
+// ext 名字是规定写法
+ext {
+    compileSdkVersion = 29;
 }
 
 task clean(type: Delete) {
